@@ -43,7 +43,7 @@ pipeline {
                    dockerPush(env.PRODUCER_IMAGE_NAME)
 
                    echo "pushing consumer image to docker hub.."
-                   dockerLogin(env.CONSUMER_IMAGE_NAME)
+                   dockerPush(env.CONSUMER_IMAGE_NAME)
                 }
             }
         }
