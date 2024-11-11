@@ -32,6 +32,22 @@ pipeline {
                 }
             }
         }
+
+        stage("push docker images to hub registry") {
+            steps {
+                script {
+                   echo "docker hub login..."
+                   dockerLogin()
+
+                   echo "pushing producer image to docker hub..."
+                   dockerPush(env.PRODUCER_IMAGE_NAME)
+
+                   echo "pushing consumer image to docker hub.."
+                   dockerLogin(env.CONSUMER_IMAGE_NAME)
+                }
+            }
+        }
+
         stage("test") {
             steps {
                 script {
