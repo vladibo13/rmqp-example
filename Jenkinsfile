@@ -48,10 +48,11 @@ pipeline {
             }
         }
 
-        stage("test") {
+        stage("minikube test") {
             steps {
                 script {
-                   echo "testing the app"
+                   echo "testing the minikube status..."
+                   sh "minikube status"
                 }
             }
         }
