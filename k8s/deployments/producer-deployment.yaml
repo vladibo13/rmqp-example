@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: producer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: producer
+  template:
+    metadata:
+      labels:
+        app: producer
+    spec:
+      containers:
+        - name: producer
+          image: vladibo/rmq-producer:1.0
+          command:
+            [
+              "python",
+              "producer.py",
+              "-p",
+              "5672",
+              "-s",
+              "rabbitmq",
+              "-m",
+              "Hello",
+              "-r",
+              "30",
+            ]
+          # env:
+          #   - name: RABBITMQ_HOST
+          #     value: "rabbitmq.default.svc.cluster.local"

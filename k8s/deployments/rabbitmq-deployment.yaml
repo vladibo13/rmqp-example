@@ -19,9 +19,7 @@ spec:
             - containerPort: 5672 # AMQP port
             - containerPort: 15672 # Web UI port
           env:
-            - name: RABBITMQ_USERNAME
-              value: "user" # RabbitMQ username
-            - name: RABBITMQ_PASSWORD
-              value: "password" # RabbitMQ password
-            - name: RABBITMQ_DEFAULT_VHOST
-              value: "/" # Default virtual host
+            - name: RABBITMQ_DEFAULT_USER
+              value: "guest" # Replace with a secure username
+            - name: RABBITMQ_DEFAULT_PASS
+              value: "guest" # Replace with a secure password
